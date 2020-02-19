@@ -77,9 +77,9 @@ public class DeptServiceimp extends ServiceImpl<DeptMapper, Dept> implements Dep
 
 
 	@Override
-	public void deleteDepts(String[] deptIds) {
+	public void deleteDepts(List<String> idList) {
 		// TODO Auto-generated method stub
-		
+		this.baseMapper.deleteBatchIds(idList);
 	}
 
 

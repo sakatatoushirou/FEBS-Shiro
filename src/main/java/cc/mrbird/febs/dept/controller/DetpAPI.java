@@ -1,5 +1,6 @@
 package cc.mrbird.febs.dept.controller;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,5 +48,24 @@ public class DetpAPI {
 		return new FebsResponse().success();
 
 	}
+	@RequestMapping(value = "delete", produces = "application/json;charset=UTF-8")
+	public FebsResponse DeptDelete(@RequestBody(required = false) String j) {
+		String str = j.substring(1, j.length()-2);
+		String[] split = str.split(",");
+		for (String string : split) {
+			System.out.println(string);
+		}
+		List<String> asList = Arrays.asList(split);
+		System.err.println(j);
+		
+		//List dept = jObject.getJSONArray("deptId");
+		
+//		dept.forEach(a->
+//		System.out.println(a)
+//		);
+		
+		this.deptService.deleteDepts(asList);
+		return new FebsResponse().success();
 
+	}
 }

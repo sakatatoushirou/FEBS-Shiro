@@ -13,7 +13,7 @@ function ajax(url, parArr) {
 			// 请求成功
 			success : function(json) {
 				console.log(json);
-				location.reload();
+//				location.reload();
 				return json;
 			},
 			// 请求失败，包含具体的错误信息
@@ -84,5 +84,15 @@ function Confirm_revision() {
 	parArr.deptName = deptName;
 	parArr.orderNum = orderNum;
 	console.log(JSON.stringify(parArr));
+	ajax(url, parArr);
+}
+
+
+function deletes(){	
+	var parArr = "";
+	var url = "/dept/api/delete";
+	$(".mdui-table-row-selected th").text(function(k,v){
+		parArr += v + ",";
+	});
 	ajax(url, parArr);
 }

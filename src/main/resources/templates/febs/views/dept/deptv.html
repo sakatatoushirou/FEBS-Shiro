@@ -15,7 +15,8 @@
 
 
 		<div class="mdui-table-fluid">
-			<table id="table" class="mdui-table mdui-table-selectable mdui-table-hoverable">
+			<table id="table"
+				class="mdui-table mdui-table-selectable mdui-table-hoverable">
 				<thead>
 					<tr>
 						<th>部门ID</th>
@@ -24,7 +25,7 @@
 						<th>排序</th>
 						<th>创建时间</th>
 						<th>修改时间</th>
-						<th onclick="tanchuang()">操作123</th>
+						<th onclick="tanchuang()">操作</th>
 					</tr>
 				</thead>
 				<tbody th:each="i : ${depts}">
@@ -43,14 +44,12 @@
 			</table>
 		</div>
 		<br>
-		<div style="text-align: right; ">
-			<button  class="mdui-btn mdui-color-theme-accent mdui-ripple"
-							mdui-dialog="{target: '#example-2'}"
-				onclick="onbth()">添加</button>
-				<button  class="mdui-btn mdui-color-theme-accent mdui-ripple"
-							mdui-dialog="{target: '#example-2'}"
-				onclick="onbth()">删除</button>
-				
+		<div style="text-align: right;">
+			<button class="mdui-btn mdui-color-theme-accent mdui-ripple"
+				mdui-dialog="{target: '#example-2'}" onclick="onbth()">添加</button>
+			<button class="mdui-btn mdui-color-theme-accent mdui-ripple"
+				mdui-dialog="{target: '#example-3'}">删除</button>
+
 		</div>
 		<div class="mdui-dialog" id="example-1">
 			<div class="mdui-dialog-title">修改</div>
@@ -102,45 +101,53 @@
 						onclick="Confirm_revision()">确定</button>
 				</div>
 			</div>
-
-
 		</div>
-		<script src="//cdnjs.loli.net/ajax/libs/mdui/0.4.3/js/mdui.min.js"></script>
-		<script src="/jquery-3.4.1.js"></script>
-		<script src="/souce.js"></script>
+		
+		<div class="mdui-dialog" id="example-3">
+			<div class="mdui-dialog-title">删除</div>
+			<div class="mdui-dialog-content">你确定要删除吗？
+				<div class="mdui-dialog-actions">
+					<button class="mdui-btn mdui-ripple" mdui-dialog-close>取消</button>
+					<button class="mdui-btn mdui-ripple" mdui-dialog-confirm
+						onclick="deletes()">确定</button>
+				</div>
+			</div>
+
+
+</div>
+		
+		
+	</div>
+	<script src="//cdnjs.loli.net/ajax/libs/mdui/0.4.3/js/mdui.min.js"></script>
+	<script src="/jquery-3.4.1.js"></script>
+	<script src="/souce.js"></script>
 </body>
 
 
 <script>
-	function tanchuang(){
-		
-		
+	function tanchuang() {
+
 		var mytable = document.getElementById("table")
-		
+
 		console.log(mytable);
-		
-		
-		
-		$(document).ready(function(){
+
+		$(document).ready(function() {
 			//$('table[]'
-		
-		
-		var mytable = document.getElementById("table")
-		
-		console.log(mytable);
-		
-			var shuzu=[];
-			if($('tbody tr').attr('class')=='mdui-table-row-selected'){
-				if($('tbody tr th').attr('scope')=='row'){
-					var aa=$('tbody tr th').html();
+
+			var mytable = document.getElementById("table")
+
+			console.log(mytable);
+
+			var shuzu = [];
+			if ($('tbody tr').attr('class') == 'mdui-table-row-selected') {
+				if ($('tbody tr th').attr('scope') == 'row') {
+					var aa = $('tbody tr th').html();
 					console.log(aa);
 				}
-				
+
 			}
 		});
 	}
-
-	
 </script>
 
 </html>

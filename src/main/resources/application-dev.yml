@@ -15,22 +15,24 @@ spring:
       datasource:
         # 数据源-1，名称为 base
         base:
-          username: root
+          username: febs_base
           password: 123456
           driver-class-name: com.mysql.cj.jdbc.Driver
-          url: jdbc:mysql://127.0.0.1:3306/febs_base?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
+          url: jdbc:mysql://rjx.f3322.net:33060/febs_base?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
         # 数据源-2，名称为 quartz
         quartz:
-          username: root
+          username: febs_quartz
           password: 123456
           driver-class-name: com.mysql.cj.jdbc.Driver
-          url: jdbc:mysql://127.0.0.1:3306/febs_quartz?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
-
+          url: jdbc:mysql://rjx.f3322.net:33060/febs_quartz?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
+    resources:
+      chain:
+       cache: false
   redis:
     # Redis数据库索引（默认为 0）
     database: 0
     # Redis服务器地址
-    host: 127.0.0.1
+    host: 10.1.1.2
     # Redis服务器连接端口
     port: 6379
     # Redis 密码

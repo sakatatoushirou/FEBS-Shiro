@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+
+<head>
+<meta charset="utf-8">
+<title>dept</title>
+<link rel="stylesheet" href="/layui/css/layui.css" media="all">
+</head>
+<link rel="stylesheet"
+	href="//cdnjs.loli.net/ajax/libs/mdui/0.4.3/css/mdui.min.css">
+
+<body class="mdui-theme-primary-indigo mdui-theme-accent-pink">
+	<div class="mdui-container">
+
+
+		<div class="mdui-table-fluid">
+			<table id="table" class="mdui-table mdui-table-selectable mdui-table-hoverable">
+				<thead>
+					<tr>
+						<th>部门ID</th>
+						<th>上级部门ID</th>
+						<th>部门名称</th>
+						<th>排序</th>
+						<th>创建时间</th>
+						<th>修改时间</th>
+						<th onclick="tanchuang()">操作123</th>
+					</tr>
+				</thead>
+				<tbody th:each="i : ${depts}">
+					<th scope="row" th:text="${i.deptId}"></th>
+					<td th:text="${i.parentId}"></td>
+					<td th:text="${i.deptName}"></td>
+					<td th:text="${i.orderNum}"></td>
+					<td th:text="${#dates.format(i.createTime,'yyyy-MM-dd HH:mm:ss')}"></td>
+					<td th:text="${#dates.format(i.modifyTime,'yyyy-MM-dd HH:mm:ss')}"></td>
+					<td><button
+							class="mdui-btn mdui-color-theme-accent mdui-ripple"
+							mdui-dialog="{target: '#example-1'}"
+							th:onclick="onbth([[${i.deptId}]])">修改</button></td>
+
+				</tbody>
+			</table>
+		</div>
+		<br>
+		<div style="text-align: right; ">
+			<button  class="mdui-btn mdui-color-theme-accent mdui-ripple"
+							mdui-dialog="{target: '#example-2'}"
+				onclick="onbth()">添加</button>
+				<button  class="mdui-btn mdui-color-theme-accent mdui-ripple"
+							mdui-dialog="{target: '#example-2'}"
+				onclick="onbth()">删除</button>
+				
+		</div>
+		<div class="mdui-dialog" id="example-1">
+			<div class="mdui-dialog-title">修改</div>
+			<div class="mdui-dialog-content">
+				<div class="mdui-textfield ">
+					<label class="mdui-textfield-label">部门ID</label> <input
+						class="mdui-textfield-input" id="deptId" type="text"
+						readonly="readonly" />
+				</div>
+				<div class="mdui-textfield ">
+					<label class="mdui-textfield-label">上级部门ID</label> <input
+						class="mdui-textfield-input" id="parentId" type="text" />
+				</div>
+				<div class="mdui-textfield ">
+					<label class="mdui-textfield-label">部门名称</label> <input
+						class="mdui-textfield-input" id="deptName" type="text" />
+				</div>
+				<div class="mdui-textfield ">
+					<label class="mdui-textfield-label">排序</label> <input
+						class="mdui-textfield-input" id="orderNum" type="text" />
+				</div>
+				<div class="mdui-dialog-actions">
+					<button class="mdui-btn mdui-ripple" mdui-dialog-close>取消</button>
+					<button class="mdui-btn mdui-ripple" mdui-dialog-confirm
+						onclick="Confirm_revision()">确定</button>
+				</div>
+			</div>
+
+
+		</div>
+		<div class="mdui-dialog" id="example-2">
+			<div class="mdui-dialog-title">添加</div>
+			<div class="mdui-dialog-content">
+				<div class="mdui-textfield ">
+					<label class="mdui-textfield-label">上级部门ID</label> <input
+						class="mdui-textfield-input" id="parentId" type="text" />
+				</div>
+				<div class="mdui-textfield ">
+					<label class="mdui-textfield-label">部门名称</label> <input
+						class="mdui-textfield-input" id="deptName" type="text" />
+				</div>
+				<div class="mdui-textfield ">
+					<label class="mdui-textfield-label">排序</label> <input
+						class="mdui-textfield-input" id="orderNum" type="text" />
+				</div>
+				<div class="mdui-dialog-actions">
+					<button class="mdui-btn mdui-ripple" mdui-dialog-close>取消</button>
+					<button class="mdui-btn mdui-ripple" mdui-dialog-confirm
+						onclick="Confirm_revision()">确定</button>
+				</div>
+			</div>
+
+
+		</div>
+		<script src="//cdnjs.loli.net/ajax/libs/mdui/0.4.3/js/mdui.min.js"></script>
+		<script src="/jquery-3.4.1.js"></script>
+		<script src="/souce.js"></script>
+</body>
+
+
+<script>
+	function tanchuang(){
+		
+		
+		var mytable = document.getElementById("table")
+		
+		console.log(mytable);
+		
+		
+		
+		$(document).ready(function(){
+			//$('table[]'
+		
+		
+		var mytable = document.getElementById("table")
+		
+		console.log(mytable);
+		
+			var shuzu=[];
+			if($('tbody tr').attr('class')=='mdui-table-row-selected'){
+				if($('tbody tr th').attr('scope')=='row'){
+					var aa=$('tbody tr th').html();
+					console.log(aa);
+				}
+				
+			}
+		});
+	}
+
+	
+</script>
+
+</html>
